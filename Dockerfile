@@ -20,7 +20,8 @@ RUN \
     mv target/release/simple-spa-http-server bin && \
     rm -rf target
 
-FROM rust
+FROM ubuntu
+RUN apt-get update && apt-get install openssl -y
 
 WORKDIR /spa
 
