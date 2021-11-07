@@ -6,6 +6,7 @@ Rust app / docker image that serves files from a directory for single page apps 
 ```bash
 BIND=0.0.0.0:8080
 CACHE_CONTROL=public, max-age=86400
+CACHE_CONTROL_INDEX=public, max-age=60
 SERVE=./www
 ```
 

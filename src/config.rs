@@ -6,12 +6,18 @@ pub struct Config {
     pub bind: String,
     #[serde(default = "default_cache_control")]
     pub cache_control: String,
+    #[serde(default = "default_cache_control_index")]
+    pub cache_control_index: String,
     #[serde(default = "default_serve")]
     pub serve: String,
 }
 
 fn default_cache_control() -> String {
     "public, max-age=86400".to_string()
+}
+
+fn default_cache_control_index() -> String {
+    "public, max-age=60".to_string()
 }
 
 fn default_bind() -> String {
