@@ -3,7 +3,7 @@ extern crate lazy_static;
 extern crate serde_json;
 
 use actix_files as fs;
-use actix_web::{guard, middleware, web, App, HttpRequest, HttpResponse, HttpServer, Result};
+use actix_web::{guard, http, middleware, web, App, HttpRequest, HttpResponse, HttpServer, Result};
 
 mod config;
 use config::CONFIG;
@@ -17,7 +17,8 @@ lazy_static! {
 
 async fn index_serve(_req: HttpRequest) -> Result<HttpResponse> {
     Ok(HttpResponse::Ok()
-        .header("Cache-Control", &*CONFIG.cache_control_index)
+        .set_header(http::header::CONTENT_TYPE, "text/html")
+        .set_header(http::header::CACHE_CONTROL, &*CONFIG.cache_control_index)
         .body(HTML.as_str()))
 }
 
